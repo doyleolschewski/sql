@@ -27,7 +27,7 @@ prompt APPLICATION 81877 - O'Scketchy Movie Library
 -- Application Export:
 --   Application:     81877
 --   Name:            O'Scketchy Movie Library
---   Date and Time:   23:28 Tuesday February 20, 2018
+--   Date and Time:   23:31 Tuesday February 20, 2018
 --   Exported By:     DOYLE_OLSCHEWSKI@HOTMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -44,6 +44,7 @@ prompt APPLICATION 81877 - O'Scketchy Movie Library
 --     Dynamic Actions:          6
 --   Shared Components:
 --     Logic:
+--       Build Options:          1
 --     Navigation:
 --       Lists:                  3
 --       Breadcrumbs:            1
@@ -87,7 +88,7 @@ wwv_flow_api.create_flow(
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'DOYLEOLSCHEWSKI')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,'O''Scketchy Movie Library')
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'F_81877')
-,p_page_view_logging=>'YES'
+,p_page_view_logging=>'NO'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'55E20F1ACE59316B779481E19D0E0CCE56D04B3FDA5C12F187552CAA4FCE49C2'
 ,p_bookmark_checksum_function=>'SH512'
@@ -113,10 +114,11 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
+,p_default_error_display_loc=>'INLINE_IN_NOTIFICATION'
 ,p_substitution_string_01=>'APPNAME'
 ,p_substitution_value_01=>'O''Sketchy Movie Library'
 ,p_last_updated_by=>'DOYLE_OLSCHEWSKI@HOTMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20180129234338'
+,p_last_upd_yyyymmddhh24miss=>'20180220233107'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -9182,7 +9184,11 @@ end;
 /
 prompt --application/shared_components/logic/build_options
 begin
-null;
+wwv_flow_api.create_build_option(
+ p_id=>wwv_flow_api.id(51284220412919345532)
+,p_build_option_name=>'Exclude from application'
+,p_build_option_status=>'EXCLUDE'
+);
 end;
 /
 prompt --application/shared_components/globalization/language
